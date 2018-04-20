@@ -1,0 +1,15 @@
+<div class="row user-profile">
+    <div class="col-md-4">
+      <ul>
+        <li>
+          <%= gravatar_for(user, "user-avartar") %>
+        </li>
+        <li>
+          Name: <%= user.name %>
+        </li>
+      </ul>   
+    </div>
+    <div class="col-md-8">
+      <%= user.description %>
+    </div>
+</div>
