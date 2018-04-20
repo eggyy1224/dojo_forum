@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
-    @articles =  Article.all
+    @articles =  Article.all.where(state: 'publish')
   end
 
   def new

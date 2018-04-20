@@ -3,5 +3,12 @@ Rails.application.routes.draw do
   
   root "articles#index"
   resources :articles 
-  resources :users
+  resources :users do
+    member do
+      get :draft
+      get :collection
+      get :follower
+      get :comment
+    end
+  end
 end
