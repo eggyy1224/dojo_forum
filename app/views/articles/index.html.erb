@@ -1,2 +1,21 @@
 <h1>Article index</h1>
-<%= link_to "新增文章", new_article_path, class: 'btn btn-primary' %>
+<table class="table">
+  <thead>
+    <th scope="col">回覆數</th>
+    <th scope="col">標題</th>
+    <th scope="col">內容</th> 
+    <th scope="col">最後回覆時間</th>
+    <th scope="col">觀看次數</th>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.replies_count %></td>
+        <td><%= article.title %></td>
+        <td><%= article.content %></td>
+        <td><%= last_replied_at(article) %></td>
+        <td><i class="fa fa-eye fa-lg"></i><%= article.views_count %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
