@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   def index
     @articles =  Article.all
   end
@@ -10,7 +10,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
     if @article.save
+      params[:article][:category_ids].delete("")
+      params[:article][:category_ids].each do |category_id|
+        # binding.pry
+        @article.categories << Category.find(category_id)
+      end
       flash[:notice] = "成功新增文章"
       redirect_to @article
     else
@@ -26,6 +32,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :auth, :category_ids)
   end
 end
