@@ -17,4 +17,6 @@ Rails.application.routes.draw do
       get :comment
     end
   end
+
+  resources :comments, only: [:edit, :update, :destroy]
 end
