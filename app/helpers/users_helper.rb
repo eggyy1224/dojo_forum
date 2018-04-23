@@ -11,4 +11,8 @@ module UsersHelper
   def title(user)
     user == current_user ? "我" : user.name
   end
+
+  def admin?
+    current_user.role == 'admin'
+  end
 end

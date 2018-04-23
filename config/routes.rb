@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   
+  namespace :admin do
+    root "users#index"
+
+    resources :users, only: [:index, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :delete]
+  end
+
   root "articles#index"
   resources :articles do
     member do
