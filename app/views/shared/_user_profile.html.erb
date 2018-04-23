@@ -1,11 +1,16 @@
 <div class="row user-profile">
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <ul>
         <li>
           <%= gravatar_for(user, "user-avartar") %>
         </li>
         <li>
-          Name: <%= user.name %>
+          <%= user.name %>
+        </li>
+        <li>
+          <% if user == current_user %>
+            <%= link_to "編輯個人資料", edit_user_path(user), class: "btn btn-primary" %>
+          <% end %>
         </li>
       </ul>   
     </div>
