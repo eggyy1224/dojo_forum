@@ -12,6 +12,7 @@
   <div class="col-md-12">
     <%= simple_form_for @comment, url: comment_article_path, method: :post do |f| %>
       <%= f.input :content, label: "留下評論" %>
+      <%= f.hidden_field :article_id, :value => @article.id %>
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   </div>

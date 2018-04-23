@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:edit, :update, :destroy]
+  resources :feeds, only: [:index]
 end

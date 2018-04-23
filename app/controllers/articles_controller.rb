@@ -66,6 +66,7 @@ class ArticlesController < ApplicationController
   end
 
   def comment
+    # binding.pry
     article = Article.find(params[:id])
     comment = article.comments.build(comment_params)
     comment.update(user_id: current_user.id)
@@ -99,7 +100,7 @@ class ArticlesController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :article_id)
   end
 
   def find_article
