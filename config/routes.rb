@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :articles do
     member do
       post :comment
+      post :collect
+      post :uncollect
     end
   end
   resources :users do

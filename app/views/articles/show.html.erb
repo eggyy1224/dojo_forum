@@ -6,9 +6,16 @@
   <div class="col-md-12">
     <p><%= @article.content %></p>
   </div>
+  <div class="col-md-12 text-right">
+    <% if user_collected?(@article) %>
+      <%= link_to "放棄收藏", uncollect_article_path(@article), method: :post %>
+    <% else %>
+      <%= link_to "收藏此文章", collect_article_path(@article), method: :post %>
+    <% end %>
+  </div>
   <div class="col-md-12">
     <%= simple_form_for @comment, method: :post, url: comment_article_path do |f| %>
-      <%= f.input :content, label: "評論內容" %>
+      <%= f.input :content, label: "留下評論" %>
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   </div>

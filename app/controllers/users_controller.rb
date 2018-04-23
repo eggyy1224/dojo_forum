@@ -28,6 +28,8 @@ class UsersController < ApplicationController
   end
 
   def collection
+    @user = User.find(params[:id])
+    @articles = @user.collection_articles
   end
 
   def follower
