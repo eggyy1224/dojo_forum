@@ -8,12 +8,10 @@
         <td><%= article.state %></td>
         <td><%= article.created_at %></td>
         <td>
-          <%= link_to edit_article_path(article) do %>
-            <%= fa_icon "pencil", class: "fa-2x pull-left" %>
-          <% end %>
-          <%= link_to article_path(article), method: :delete do %>
-            <%= fa_icon "trash", class: "fa-2x"%>
-          <% end %>
+          <%= render "shared/collection", article: article %>
+        </td>
+        <td>
+          <%= render "shared/author_panel", article: article %>
         </td>
       </tr> 
     <% end %>

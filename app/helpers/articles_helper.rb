@@ -7,4 +7,8 @@ module ArticlesHelper
     # binding.pry
     current_user.collection_articles.include?(article)
   end
+
+  def author?(article)
+    article.user == current_user
+  end
 end

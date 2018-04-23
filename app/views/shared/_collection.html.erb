@@ -1,0 +1,7 @@
+<% unless author?(article) %>
+  <% if user_collected?(article) %>
+    <%= link_to "放棄收藏", uncollect_article_path(article), method: :post %>
+  <% else %>
+    <%= link_to "收藏此文章", collect_article_path(article), method: :post %>
+  <% end %>
+<% end %>

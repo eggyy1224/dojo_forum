@@ -7,11 +7,7 @@
     <p><%= @article.content %></p>
   </div>
   <div class="col-md-12 text-right">
-    <% if user_collected?(@article) %>
-      <%= link_to "放棄收藏", uncollect_article_path(@article), method: :post %>
-    <% else %>
-      <%= link_to "收藏此文章", collect_article_path(@article), method: :post %>
-    <% end %>
+    <%= render "shared/collection", article: @article %>
   </div>
   <div class="col-md-12">
     <%= simple_form_for @comment, method: :post, url: comment_article_path do |f| %>

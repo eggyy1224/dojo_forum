@@ -26,14 +26,18 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    # @article = Article.find(params[:id])
+    @article.views_count += 1
+    @article.save
     @user = @article.user
     @comment = Comment.new
   end
 
-  # def edit
-  #   @article = Article.find(params[:id])
-  # end
+  def edit
+    unless @article.user == current_user
+      flash[:alert] = "作者才可操作"
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   def update
     if @article.save

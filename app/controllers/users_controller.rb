@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   end
 
   def comment
+    @user = User.find(params[:id])
+    # binding.pry
+    @articles = @user.commentted_articles.uniq
   end
 
   def collection
