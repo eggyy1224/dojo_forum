@@ -1,19 +1,21 @@
 <%= render "shared/user_profile", user: @user %>
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
-    <%= link_to "我的文章", @user, class: "nav-link" %>
+    <%= link_to "#{title(@user)}的文章", @user, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "我的回覆", comment_user_path(@user), class: "nav-link" %>
+    <%= link_to "#{title(@user)}的回覆", comment_user_path(@user), class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "我的收藏", collection_user_path, class: "nav-link active" %>
+    <%= link_to "#{title(@user)}的收藏", collection_user_path, class: "nav-link active" %>
   </li>
+  <% if @user == current_user %>
+    <li class="nav-item">
+      <%= link_to "#{title(@user)}的草稿", draft_user_path(@user), class: "nav-link" %>
+    </li>
+  <% end %>
   <li class="nav-item">
-    <%= link_to "我的草稿", draft_user_path(@user), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "我的朋友", follower_user_path(@user), class: "nav-link" %>
+    <%= link_to "#{title(@user)}的朋友", follower_user_path(@user), class: "nav-link" %>
   </li>
 </ul>
 <%= render "shared/articles_list", articles: @articles %>

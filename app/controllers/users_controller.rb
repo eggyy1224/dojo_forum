@@ -6,7 +6,13 @@ class UsersController < ApplicationController
 
   def draft
     @user = User.find(params[:id])
-    @drafts = @user.articles.where(state: 'draft')
+    if @user == current_user
+      @drafts = @user.articles.where(state: 'draft')
+    else
+      flash[:alert] = "禁止訪問"
+      redirect_back(fallback_location: root_path)
+    end
+    
   end
 
   def edit
