@@ -2,7 +2,9 @@
   <tbody>
     <% articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
+        <td>
+          <%= link_to article.title, article %>
+        </td>
         <td><%= article.state %></td>
         <td><%= article.created_at %></td>
         <td>

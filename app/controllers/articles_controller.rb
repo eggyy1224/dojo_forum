@@ -25,9 +25,11 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # def show
-  #   @article = Article.find(params[:id])
-  # end
+  def show
+    # @article = Article.find(params[:id])
+    @user = @article.user
+    @comment = Comment.new
+  end
 
   # def edit
   #   @article = Article.find(params[:id])
@@ -57,13 +59,29 @@ class ArticlesController < ApplicationController
       flash[:alert] = "無法操作"
       redirect_back(fallback_location: root_path)
     end
-    
+  end
+
+  def comment
+    article = Article.find(params[:id])
+    comment = article.comments.build(comment_params)
+    comment.update(user_id: current_user.id)
+    if comment.save
+      flash[:notice] = "成功新增留言"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "新增留言失敗"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
 
   def article_params
     params.require(:article).permit(:title, :content, :auth, :category_ids, :state)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 
   def find_article

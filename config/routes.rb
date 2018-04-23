@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   
   root "articles#index"
-  resources :articles 
+  resources :articles do
+    member do
+      post :comment
+    end
+  end
   resources :users do
     member do
       get :draft

@@ -1,3 +1,30 @@
-<h1>show page</h1>
-<h2><%= @article.title %></h2>  
-<p><%= @article.content %></p>
+<%= render "shared/user_profile", user: @user %>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h2><%= @article.title %></h2>  
+  </div>
+  <div class="col-md-12">
+    <p><%= @article.content %></p>
+  </div>
+  <div class="col-md-12">
+    <%= simple_form_for @comment, method: :post, url: comment_article_path do |f| %>
+      <%= f.input :content, label: "評論內容" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <% unless @article.comments.blank? %>
+    <div class="col-md-12">
+      <% @article.comments.each do |comment| %>
+        <div class="row comment-panel">
+          <div class="col-md-3">
+            <%= gravatar_for(comment.user, "comment-user-avartar") %>
+          </div>
+          <div class="col-md-9">
+            <%= comment.content %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
