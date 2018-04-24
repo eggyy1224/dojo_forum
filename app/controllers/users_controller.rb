@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @inviters = @user.inviters
     @invitees = @user.invitees
+    @friends = @user.friends
   end
 
   private

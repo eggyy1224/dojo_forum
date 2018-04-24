@@ -1,0 +1,64 @@
+<%= render "shared/user_profile", user: @user %>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <%= link_to "#{title(@user)}的文章", @user, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{title(@user)}的回覆", comment_user_path(@user), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "#{title(@user)}的收藏", collection_user_path, class: "nav-link" %>
+  </li>
+  <% if @user == current_user %>
+    <li class="nav-item">
+      <%= link_to "#{title(@user)}的草稿", draft_user_path(@user), class: "nav-link" %>
+    </li>
+  <% end %>
+  <li class="nav-item">
+    <%= link_to "#{title(@user)}的朋友", follower_user_path(@user), class: "nav-link active" %>
+  </li>
+</ul>
+
+<div class="row padding-top-user">
+  <div class="col-md-12 text-center">
+    <h2>發出的好友邀請</h2>
+    <div class="row">
+      <% @invitees.each do |invitee| %>
+        <div class="col-md-2">
+          <%= link_to invitee do %>
+            <%= gravatar_for(invitee, 'padding-bottom-avatar') %>
+            <%= render "shared/friend_button", user: invitee %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <h2>邀請好友請求</h2>
+    <div class="row">
+      <% @inviters.each do |inviter| %>
+        <div class="col-md-2">
+          <%= link_to inviter do %>
+            <%= gravatar_for(inviter, 'padding-bottom-avatar') %>
+            <%= render "shared/friend_button", user: inviter %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <h2>好友列表</h2>
+    <div class="row">
+      <% @friends.each do |friend| %>
+        <div class="col-md-2">
+          <%= link_to friend do %>
+            <%= gravatar_for(friend, 'padding-bottom-avatar') %>
+            <%= render "shared/friend_button", user: friend %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -27,5 +27,12 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:edit, :update, :destroy]
   resources :feeds, only: [:index]
-  resources :invitations, only: [:create, :destroy]
+  resources :invitations, only: [:create, :destroy] do
+    member do
+      post :accept
+      post :decline
+    end
+  end
+
+  resources :friendships, only: [:destroy]
 end
