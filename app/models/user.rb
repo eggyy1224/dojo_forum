@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :invitations, -> {where(state: 'pending')}, foreign_key: :inviter_id, dependent: :destroy
   has_many :invitees, through: :invitations
 
-  has_many :reverse_invitations, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
+  has_many :reverse_invitations, -> {where(state: 'pending')}, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
   has_many :inviters, through: :reverse_invitations
 
   has_many :friendships, dependent: :destroy

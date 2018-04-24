@@ -26,4 +26,12 @@ class InvitationsController < ApplicationController
     flash[:notice] = '你們是朋友了'
     redirect_back(fallback_location: root_path)
   end
+
+  def decline
+    @invitation = current_user.reverse_invitations.find_by(inviter_id: params[:id])
+    @invitation.state = 'decline'
+    @invitation.save
+    flash[:notice] = '成功拒絕邀請'
+    redirect_back(fallback_location: root_path)
+  end
 end
