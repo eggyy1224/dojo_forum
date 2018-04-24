@@ -8,3 +8,35 @@
     </li>
   </ul>
 </div>
+
+<div class="row padding-top">
+  <div class="col-md-6">
+    <%= render "form", category: @category %>
+  </div>  
+</div>  
+
+<div class="row padding-top">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td class="text-center"><%= category.name %></td>
+          <td class="text-center">
+            <%= link_to edit_admin_category_path(category) do %>
+              <%= fa_icon "pencil", class: "fa-2x icon-space" %>
+            <% end %>
+            <%= link_to admin_category_path(category), method: :delete do %>
+              <%= fa_icon "trash", class: "fa-2x icon-space"%>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
