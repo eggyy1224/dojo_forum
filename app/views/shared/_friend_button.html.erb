@@ -1,0 +1,5 @@
+<% if is_invited?(user) %>
+  <%= link_to "收回交友邀請", invitation_path(user), method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "發出交友邀請", invitations_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+<% end %>

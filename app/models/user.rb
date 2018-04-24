@@ -8,4 +8,10 @@ class User < ApplicationRecord
   has_many :commentted_articles, through: :comments, source: :article
   has_many :collections, dependent: :destroy
   has_many :collection_articles, through: :collections, source: :article
+
+  has_many :invitations, foreign_key: :inviter_id, dependent: :destroy
+  has_many :invitees, through: :invitations
+
+  has_many :reverse_invitations, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
+  has_many :inviters, through: :reverse_invitations
 end

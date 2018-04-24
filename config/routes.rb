@@ -27,4 +27,5 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:edit, :update, :destroy]
   resources :feeds, only: [:index]
+  resources :invitations, only: [:create, :destroy]
 end
