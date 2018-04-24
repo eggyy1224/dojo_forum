@@ -21,7 +21,7 @@
 
 <div class="row padding-top-user">
   <% if current_user == @user %>
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center follower-column">
       <h2>發出的好友邀請</h2>
       <div class="row">
         <% @invitees.each do |invitee| %>
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center follower-column">
       <h2>邀請好友請求</h2>
       <div class="row">
         <% @inviters.each do |inviter| %>
@@ -54,7 +54,7 @@
     </div>
   <% end %>
   
-  <div class="col-md-12 text-center">
+  <div class="col-md-12 text-center follower-column">
     <h2>好友列表</h2>
     <div class="row">
       <% @friends.each do |friend| %>

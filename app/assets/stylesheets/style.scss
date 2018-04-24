@@ -39,7 +39,7 @@ ul {
 }
 
 .padding-top-user {
-  padding-top: 150px;
+  padding-top: 100px;
 }
 
 .icon-space {
@@ -48,4 +48,10 @@ ul {
 
 .padding-bottom-avatar {
   margin-bottom: 10px;
+}
+
+.follower-column {
+  min-height: 200px;
+  border: 1px solid #cecece;
+  padding-top: 20px
 }

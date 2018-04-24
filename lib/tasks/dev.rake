@@ -46,10 +46,27 @@ namespace :dev do
     puts "Now you have #{Comment.count} comments!"
   end
 
+  task fake_invitations: :environment do
+    Invitation.destroy_all
+    Friendship.destroy_all
+    20.times do |i|
+        user = User.all.sample
+        user2 = User.all.sample
+        Invitation.create!(
+            inviter: user,
+            invitee: user2,
+            state: ['pending', 'accept'].sample
+        )
+    end
+    puts "create #{Invitation.count} fake invitations"
+    puts "Now you have #{Friendship.count} friendships!"
+  end
+
   task fake_all: :environment do
     system "rails dev:fake_users"
     system "rails db:seed"
     system "rails dev:fake_articles"
     system "rails dev:fake_comments"
+    system "rails dev:fake_invitations"
   end
 end

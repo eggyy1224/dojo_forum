@@ -20,8 +20,7 @@ class InvitationsController < ApplicationController
   def accept
     @invitation = current_user.reverse_invitations.find_by(inviter_id: params[:id])
     @invitation.state = 'accept'
-    Friendship.create!(user: @invitation.inviter, friend: @invitation.invitee)
-    Friendship.create!(user: @invitation.invitee, friend: @invitation.inviter)
+   
     @invitation.save
     flash[:notice] = '你們是朋友了'
     redirect_back(fallback_location: root_path)
