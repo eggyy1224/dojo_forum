@@ -38,6 +38,9 @@ gem 'bootstrap', '~> 4.1.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'simple_form', '~> 4.0'
 gem 'font-awesome-rails', '~> 4.5'
+gem 'ffaker', '~> 2.9'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

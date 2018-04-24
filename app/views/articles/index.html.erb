@@ -14,7 +14,7 @@
         <td>
           <%= link_to article.title, article %>
         </td>
-        <td><%= article.content %></td>
+        <td><%= truncate article.content %></td>
         <td><%= last_replied_at(article) %></td>
         <td><i class="fa fa-eye fa-lg"> </i> <%= article.views_count %></td>
         <td><%= link_to article.user.name, article.user %></td>
@@ -22,3 +22,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @articles %>
