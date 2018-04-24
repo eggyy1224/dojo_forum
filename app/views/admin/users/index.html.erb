@@ -8,3 +8,38 @@
     </li>
   </ul>
 </div>
+
+<div class="row padding-top-user">
+  <div class="col-md-6"></div>
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td class="text-center"><%= link_to user.name, user %></td>
+          <td class="text-center">
+            <%= user.email %>
+          </td>
+          <td>
+            <%= simple_form_for [:admin, user] do |f| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :role, label: false, collection: [['一般', 'normal'], ['管理員', 'admin']], selected: user.role %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.button :submit, '更改權限', class: "btn btn-primary" %>
+                </div>
+              </div>  
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
