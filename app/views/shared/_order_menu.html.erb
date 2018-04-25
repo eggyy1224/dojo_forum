@@ -1,0 +1,11 @@
+<div class="dropdown margin-top-bottom">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    排序方式
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to "文章編號", articles_path, class: 'dropdown-item' %>
+    <%= link_to "最後回覆時間", articles_path(tag: 'last_replied_at'), class: 'dropdown-item' %>
+    <%= link_to "回覆數", articles_path(tag: 'comments_count'), class: 'dropdown-item' %>
+    <%= link_to "觀看數", articles_path(tag: 'views_count'), class: 'dropdown-item' %>
+  </div>
+</div>

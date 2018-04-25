@@ -24,7 +24,8 @@ namespace :dev do
             content: FFaker::Book.description,
             state: state.sample,
             auth: 'all',
-            category_ids: [Category.all.sample.id, Category.all.sample.id]
+            category_ids: [Category.all.sample.id, Category.all.sample.id],
+            last_replied_at: Time.zone.now
         )
     end
     puts "create #{Article.count} fake articles"
@@ -63,6 +64,7 @@ namespace :dev do
   end
 
   task fake_all: :environment do
+    system "rails db:reset"
     system "rails dev:fake_users"
     system "rails db:seed"
     system "rails dev:fake_articles"

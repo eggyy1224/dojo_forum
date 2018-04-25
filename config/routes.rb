@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/show'
+
   devise_for :users
   
   namespace :admin do
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   root "articles#index"
+  resources :categories, only: [:show]
   resources :articles do
     member do
       post :comment

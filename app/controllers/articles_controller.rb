@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     case params[:tag]
     when nil then @articles =  viewable_articles.order(:id).page(params[:page])
-    when 'last_replied_at' then @articles =  viewable_articles.includes(:comments).order('comments.updated_at DESC').page(params[:page])
+    when 'last_replied_at' then @articles =  viewable_articles.order('last_replied_at DESC').page(params[:page])
     when 'comments_count' then @articles =  viewable_articles.order(comments_count: :desc).page(params[:page])
     when 'views_count' then @articles =  viewable_articles.order(views_count: :desc).page(params[:page])
     end
@@ -82,6 +82,8 @@ class ArticlesController < ApplicationController
     comment = article.comments.build(comment_params)
     comment.update(user_id: current_user.id)
     if comment.save
+      article.last_replied_at = Time.zone.now
+      article.save
       flash[:notice] = "成功新增留言"
       redirect_back(fallback_location: root_path)
     else

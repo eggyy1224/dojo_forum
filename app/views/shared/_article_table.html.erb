@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <th scope="col">回覆數</th>
+    <th scope="col">標題</th>
+    <th scope="col">內容</th> 
+    <th scope="col">最後回覆時間</th>
+    <th scope="col">觀看次數</th>
+    <th scope="col">作者</th>
+  </thead>
+  <tbody>
+    <!-- 在前端擋住不能show的文章 -->
+    <% articles.each do |article| %>
+      <% if article_can_show?(article) %>
+        <tr>
+          <td><%= article.comments_count %></td>
+          <td>
+            <%= link_to article.title, article %>
+          </td>
+          <td><%= truncate article.content %></td>
+          <td><%= last_replied_at(article) %></td>
+          <td><i class="fa fa-eye fa-lg"> </i> <%= article.views_count %></td>
+          <td><%= link_to article.user.name, article.user %></td>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate articles %>
