@@ -93,17 +93,18 @@ class ArticlesController < ApplicationController
   end
 
   def collect
-    article = Article.find(params[:id])
-    article.collections.create(user_id: current_user.id)
-    flash[:notice] = "成功收藏此文章"
-    redirect_back(fallback_location: root_path)
+    @article = Article.find(params[:id])
+    @article.collections.create(user_id: current_user.id)
+    # flash.now[:notice]= "成功收藏此文章"
+    # redirect_back(fallback_location: root_path)
   end
 
   def uncollect
+    @article = Article.find(params[:id])
     collection = Collection.where(user_id: current_user.id, article_id: params[:id])[0]
     collection.delete
-    flash[:notice] = "成功取消收藏"
-    redirect_back(fallback_location: root_path)
+    # flash[:notice] = "成功取消收藏"
+    # redirect_back(fallback_location: root_path)
   end
 
   private

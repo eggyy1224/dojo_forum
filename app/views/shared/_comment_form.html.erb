@@ -1,4 +1,4 @@
-<%= simple_form_for comment do |f| %>
-  <%= f.input :content, label: "修改評論" %>
+<%= simple_form_for comment, remote: true do |f| %>
+  <%= f.input :content, label: false %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

@@ -1,0 +1,3 @@
+
+<% html = j( render "shared/comment_form", comment: @comment ) %>
+$('#content-<%= @comment.id %>').html("<%= html %>");

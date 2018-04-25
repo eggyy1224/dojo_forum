@@ -1,8 +1,8 @@
 <% if comment_author?(comment) %>
-  <%= link_to edit_comment_path(comment) do %>
+  <%= link_to edit_comment_path(comment), remote: true do %>
     <%= fa_icon "pencil", class: "fa-2x pull-left" %>
   <% end %>
-  <%= link_to comment_path(comment), method: :delete do %>
+  <%= link_to comment_path(comment), remote: true, method: :delete do %>
     <%= fa_icon "trash", class: "fa-2x"%>
   <% end %>
 <% end %>

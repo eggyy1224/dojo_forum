@@ -1,0 +1,2 @@
+<% html = j( render "shared/collection", article: @article ) %>
+$('#collect-<%= @article.id %>').html("<%= html %>")

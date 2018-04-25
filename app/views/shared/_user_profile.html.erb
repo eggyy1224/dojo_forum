@@ -2,10 +2,10 @@
     <div class="col-md-4 text-center">
       <ul>
         <li>
-          <%= gravatar_for(user, "user-avartar") %>
-        </li>
-        <li>
-          <%= user.name %>
+          <%= link_to user do %>
+            <%= gravatar_for(user, "user-avartar") %>
+            <div><%= user.name %></div>
+          <% end %>
         </li>
         <li>
           <% if user == current_user %>

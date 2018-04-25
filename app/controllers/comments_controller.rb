@@ -25,13 +25,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @article = @comment.article
     @comment.update(comment_params)
-    redirect_to @article
+    # redirect_to @article
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.delete
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   private
