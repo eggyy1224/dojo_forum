@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if current_user == @article.user
+    if current_user == @article.user || current_user.role == 'admin'
       @article.delete
       flash[:notice] = "成功刪除"
       redirect_to current_user
@@ -109,7 +109,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :auth, :category_ids, :state)
+    params.require(:article).permit(:title, :content, :auth, :category_ids, :state, :image)
   end
 
   def comment_params

@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  mount_uploader :image, ImageUploader
   paginates_per 20
   belongs_to :user
   has_many :article_categories, dependent: :destroy

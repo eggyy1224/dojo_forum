@@ -12,9 +12,11 @@
       <% end %>
     </p>
   </div>
-  <div class="col-md-12 text-right">
+  <div class="col-md-12 text-right margin-top-bottom">
+    <%= render 'shared/admin_delete_button', article: @article %>
     <%= render 'shared/author_panel', article: @article %>
     <%= render "shared/collection", article: @article %>
+    <hr>
   </div>
   <div class="col-md-12">
     <%= simple_form_for @comment, url: comment_article_path, method: :post do |f| %>

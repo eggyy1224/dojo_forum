@@ -4,5 +4,8 @@
   <%= f.input :auth, label: '誰可以看到', as: :radio_buttons, collection: [['全部', 'all'], ['朋友', 'friends'], ['我自己', 'self']], class: "form-control" %>
   <%= f.association :categories, label: '分類', as: :check_boxes, class: "form-control" %>
   <%= f.input :state, label: "發佈狀態", collection: [["草稿", 'draft'], ['發佈','publish']], selected:["publish"], class: "form-control" %>
+  <%= f.file_field :image, class: 'form-control' %>
+  <br>
+  <br>
   <%= f.button :submit, '提交', class: "btn btn-primary" %>
 <% end %>

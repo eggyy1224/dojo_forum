@@ -1,0 +1,5 @@
+<% if admin? && !author?(article) %>
+  <%= link_to article_path(article), method: :delete do %>
+    <%= fa_icon "trash", class: "fa-2x pull-left"%>
+  <% end %>
+<% end %>
