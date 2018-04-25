@@ -17,4 +17,8 @@ class User < ApplicationRecord
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
+  def is_friend_of?(user)
+    self.friends.include?(user)
+  end
 end

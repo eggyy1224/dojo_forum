@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
-    @articles =  Article.where(state: 'publish').page params[:page]
+    # binding.pry
+    @articles =  viewable_articles
   end
 
   def new
@@ -26,10 +27,16 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article.views_count += 1
-    @article.save
-    @user = @article.user
-    @comment = Comment.new
+    if helpers.article_can_show?(@article)
+      @article.views_count += 1
+      @article.save
+      @user = @article.user
+      @comment = Comment.new
+      @comments = @article.comments.page(params[:page]).per(5)
+    else
+      flash[:alert] = "無權限觀看"
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -40,7 +47,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.save
+    if @article.update_attributes(article_params)
       @article.categories.delete_all
       params[:article][:category_ids].delete("")
       params[:article][:category_ids].each do |category_id|
@@ -58,7 +65,7 @@ class ArticlesController < ApplicationController
     if current_user == @article.user
       @article.delete
       flash[:notice] = "成功刪除"
-      redirect_back(fallback_location: root_path)
+      redirect_to current_user
     else
       flash[:alert] = "無法操作"
       redirect_back(fallback_location: root_path)
@@ -105,5 +112,9 @@ class ArticlesController < ApplicationController
 
   def find_article
     @article = Article.find(params[:id])
+  end
+
+  def viewable_articles
+    Article.where(state: 'publish').order(:id).page(params[:page])
   end
 end

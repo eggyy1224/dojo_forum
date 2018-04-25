@@ -14,4 +14,15 @@ module ArticlesHelper
   def author?(article)
     article.user == current_user
   end
+
+  def article_can_show?(article)
+    if author?(article) || article.auth == 'all'
+      true
+    elsif article.auth == 'self'
+      false
+    else
+      is_friend?(article.user)
+    end
+
+  end
 end

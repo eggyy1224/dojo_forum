@@ -4,19 +4,21 @@
     <%= link_to "#{title(@user)}的文章", @user, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "#{title(@user)}的回覆", comment_user_path(@user), class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "#{title(@user)}的收藏", collection_user_path, class: "nav-link" %>
+    <%= link_to "#{title(@user)}回覆過的文章", comment_user_path(@user), class: "nav-link" %>
   </li>
   <% if @user == current_user %>
     <li class="nav-item">
+      <%= link_to "#{title(@user)}的收藏", collection_user_path, class: "nav-link" %>
+    </li>
+  
+    <li class="nav-item">
       <%= link_to "#{title(@user)}的草稿", draft_user_path(@user), class: "nav-link" %>
     </li>
+  
+    <li class="nav-item">
+      <%= link_to "#{title(@user)}的朋友", follower_user_path(@user), class: "nav-link active" %>
+    </li>
   <% end %>
-  <li class="nav-item">
-    <%= link_to "#{title(@user)}的朋友", follower_user_path(@user), class: "nav-link active" %>
-  </li>
 </ul>
 
 <div class="row padding-top-user">

@@ -27,7 +27,6 @@ class Admin::CategoriesController < ApplicationController
       flash[:notice] = "新增類別成功"
       redirect_back(fallback_location: root_path)
     else
-      binding.pry
       flash[:alert] = "新增失敗"
       redirect_back(fallback_location: root_path)
     end
@@ -35,8 +34,13 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
-    category.delete
-    redirect_back(fallback_location: root_path)
+    if category.articles.blank?
+      category.delete
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "無法刪除有文章使用的分類"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
