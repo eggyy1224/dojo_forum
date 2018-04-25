@@ -2,8 +2,12 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
-    # binding.pry
-    @articles =  viewable_articles
+    case params[:tag]
+    when nil then @articles =  viewable_articles.order(:id).page(params[:page])
+    when 'last_replied_at' then @articles =  viewable_articles.includes(:comments).order('comments.updated_at DESC').page(params[:page])
+    when 'comments_count' then @articles =  viewable_articles.order(comments_count: :desc).page(params[:page])
+    when 'views_count' then @articles =  viewable_articles.order(views_count: :desc).page(params[:page])
+    end
   end
 
   def new
@@ -115,6 +119,6 @@ class ArticlesController < ApplicationController
   end
 
   def viewable_articles
-    Article.where(state: 'publish').order(:id).page(params[:page])
+    Article.where(state: 'publish')
   end
 end
