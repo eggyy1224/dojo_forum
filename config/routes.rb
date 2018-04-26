@@ -38,4 +38,10 @@ Rails.application.routes.draw do
   end
 
   resources :friendships, only: [:destroy]
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :articles, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
 end
