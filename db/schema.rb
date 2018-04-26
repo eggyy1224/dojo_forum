@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425084047) do
+ActiveRecord::Schema.define(version: 20180426012609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180425084047) do
     t.integer "views_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "last_replied_at"
+    t.datetime "last_replied_at", default: "2018-04-26 01:29:01"
     t.string "image"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end

@@ -1,0 +1,7 @@
+var category = document.createElement("tr");
+
+category.id = "row-<%= @category.id %>";
+
+category.innerHTML = "<%= j( render 'category_row', category: @category ) %>";
+$("#tbody").append(category);
+$('#category_name').val("");

@@ -69,6 +69,6 @@ namespace :dev do
     system "rails db:seed"
     system "rails dev:fake_articles"
     system "rails dev:fake_comments"
-    system "rails dev:fake_invitations"
+    # system "rails dev:fake_invitations"
   end
 end

@@ -1,9 +1,9 @@
 <% unless is_friend?(user) %>
   <% unless is_invited_by?(user) %>
     <% if is_invited?(user) %>
-      <%= link_to "收回交友邀請", invitation_path(user), method: :delete, class: "btn btn-danger" %>
+      <%= link_to "收回交友邀請", invitation_path(user), method: :delete, class: "btn btn-danger", remote: true %>
     <% else %>
-      <%= link_to "發出交友邀請", invitations_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+      <%= link_to "發出交友邀請", invitations_path(user_id: user.id), method: :post, class: 'btn btn-primary', remote: true %>
     <% end %>
   <% else %>
     <%= link_to '同意邀請', accept_invitation_path(user), method: :post, class: 'btn btn-primary padding-bottom-avatar' %>

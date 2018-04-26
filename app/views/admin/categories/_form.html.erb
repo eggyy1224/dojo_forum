@@ -1,5 +1,4 @@
-<%= simple_form_for [:admin, @category] do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for [:admin, category], remote: true do |f| %>
   <%= f.input :name, label: false %>
   <%= f.button :submit, '送出', class: 'btn btn-primary' %>
 <% end %>

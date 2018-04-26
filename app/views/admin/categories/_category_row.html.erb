@@ -1,0 +1,9 @@
+<td class="text-center" id="category-<%= category.id %>"><%= category.name %></td>
+<td class="text-center">
+  <%= link_to edit_admin_category_path(category), remote: true do %>
+    <%= fa_icon "pencil", class: "fa-2x icon-space" %>
+  <% end %>
+  <%= link_to admin_category_path(category), method: :delete, remote: true do %>
+    <%= fa_icon "trash", class: "fa-2x icon-space"%>
+  <% end %>
+</td>

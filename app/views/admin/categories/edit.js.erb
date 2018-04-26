@@ -1,0 +1,2 @@
+<% html = j( render "form", category: @category ) %>
+$('#category-<%= @category.id %>').html("<%= html %>")

@@ -11,7 +11,9 @@
           <% if user == current_user %>
             <%= link_to "編輯個人資料", edit_user_path(user), class: "btn btn-primary" %>
           <% else %>
-            <%= render "shared/friend_button", user: user %>
+            <div id="user-<%= user.id %>">
+              <%= render "shared/friend_button", user: user %>
+            </div>
           <% end %>
         </li>
       </ul>   
