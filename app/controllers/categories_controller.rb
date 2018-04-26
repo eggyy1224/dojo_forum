@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   def show
+    @order_tag = params[:tag]
     @category = Category.find(params[:id])
+    @category_tag = @category.name
     case params[:tag]
     when nil then @articles =  viewable_articles(@category).order(:id).page(params[:page])
     when 'last_replied_at' then @articles =  viewable_articles(@category).order('last_replied_at DESC').page(params[:page])

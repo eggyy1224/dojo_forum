@@ -24,4 +24,13 @@ module ArticlesHelper
     end
 
   end
+
+  def transcript_tag(tag)
+    case tag
+    when nil then '文章編號'
+    when 'last_replied_at' then '最後回覆時間'
+    when 'comments_count' then '回覆數'
+    when 'views_count' then '觀看數'
+    end
+  end
 end

@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :find_article, only: [:show, :edit, :update, :destroy]
   def index
+    @order_tag = params[:tag]
+    @category_tag = "全部"
     case params[:tag]
     when nil then @articles =  viewable_articles.order(:id).page(params[:page])
     when 'last_replied_at' then @articles =  viewable_articles.order('last_replied_at DESC').page(params[:page])
