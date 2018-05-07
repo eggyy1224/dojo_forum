@@ -1,22 +1,28 @@
 <div class="row">
   <div class="col-md-12 user-profile">
     <div class="row text-center">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <h1>全站使用者</h1>
         <div class="sq-region">
            <h2><%= @user_count %></h2> 
         </div>
       </div>
-      <div class="col-md-4">
-        <h1>全站文章數</h1>
+      <div class="col-md-3">
+        <h1>全站文章</h1>
         <div class="sq-region">
           <h2><%= @post_count %></h2> 
         </div>
       </div>
-      <div class="col-md-4">
-        <h1>全站回覆數</h1>
+      <div class="col-md-3">
+        <h1>全站回覆</h1>
         <div class="sq-region">
           <h2><%= @comment_count %></h2> 
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h1>全站主題</h1>
+        <div class="sq-region">
+          <h2><%= @category_count %></h2> 
         </div>
       </div>
     </div>
@@ -47,7 +53,7 @@
   <div class="col-md-6">
     <table class="table text-center">
       <thead>
-        <th>觀看最多的文章</th>
+        <th>回覆最多的文章</th>
       </thead>
       <tbody>
         <% @most_popular_post.each do |article| %>

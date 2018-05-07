@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
       @article.save
       @user = @article.user
       @comment = Comment.new
-      @comments = @article.comments.page(params[:page]).per(5)
+      @comments = @article.comments.order(created_at: :desc).page(params[:page]).per(5)
     else
       flash[:alert] = "無權限觀看"
       redirect_to root_path
