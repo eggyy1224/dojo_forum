@@ -1,4 +1,5 @@
 class Api::V1::ArticlesController < ApiController
+  before_action :authenticate_user!, except: :index
   def index
     @articles = Article.all
     render json: {

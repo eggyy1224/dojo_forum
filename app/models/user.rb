@@ -17,6 +17,11 @@ class User < ApplicationRecord
 
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  before_create :generate_authentication_token
+
+  def generate_authentication_token
+     self.authentication_token = Devise.friendly_token
+  end
 
   def is_friend_of?(user)
     self.friends.include?(user)
