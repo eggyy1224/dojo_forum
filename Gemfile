@@ -56,6 +56,8 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'pry-rails', '~> 0.3.6'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development do
