@@ -71,8 +71,8 @@ group :development do
 end
 
 group :production do
-  # gem "pg"
-  gem 'mysql2', '< 0.5'
+  gem 'pg', '~>0.20.0'
+  # gem 'mysql2', '< 0.5'
 end
 
 
