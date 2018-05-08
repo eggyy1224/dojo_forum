@@ -42,7 +42,7 @@ gem 'ffaker', '~> 2.9'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
-gem 'pg'
+gem 'pg', '~>0.20.0'
 
 
 group :development, :test do
