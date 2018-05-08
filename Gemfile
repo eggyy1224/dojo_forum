@@ -42,6 +42,7 @@ gem 'ffaker', '~> 2.9'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
+gem 'pg'
 
 
 group :development, :test do
@@ -67,11 +68,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pg', '~>0.20.0'
+  # gem 'pg', '~>0.20.0'
 end
 
 group :production do
-  gem 'pg', '~>0.20.0'
+  # gem 'pg', '~>0.20.0'
   # gem 'mysql2', '< 0.5'
 end
 
